@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getAllTickets } from "./services/ticketService.js"
 import "./App.css"
 
-// <> </> is a rwact fragment which wraps the other elements. JSX only allows for one parent element
+// <> </> is a react fragment which wraps the other elements. JSX only allows for one parent element
 export const App = () => {
   const [allTickets, setAllTickets] = useState([])
   const [showEmergencyOnly, setShowEmergencyOnly] = useState(false)
@@ -47,7 +47,7 @@ export const App = () => {
                 <div>{ticket.description}</div>
                 <footer>
                   <div>
-                    <div className="ticket-info">Emergency</div>
+                    <div className="ticket-info" key={ticket.id}>Emergency</div>
                     <div>{ticket.emergency ? "yes" : "no"}</div>
                   </div>
                 </footer>
