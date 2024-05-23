@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getAllEmployees } from "../../services/employeeService.jsx"
 
 export const Ticket = ({ticket, name}) => {
-    const [employees, setEmployees] = useState ([])
+    const [employees, setEmployees] = useState ([]) 
     const [assignedEmployee, setAssignedEmployee] = useState({})
 
     //invoke getAllEmployees function in order to get the employees form the database. 

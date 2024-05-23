@@ -9,6 +9,7 @@ export const TicketList = () => {
   const [allTickets, setAllTickets] = useState([])
   const [showEmergencyOnly, setShowEmergencyOnly] = useState(false)
   const [filteredTickets, setFilteredTickets] = useState([]) //leaving this as empty () shows error in console
+  const [searchTerm, setSearchTerm] = useState(" ")
 
   //Two Arguments: function & array (dependency array)... Function = WHAT we want to happen... Array = WHEN we want it to happen
   useEffect(() => {
@@ -28,10 +29,18 @@ export const TicketList = () => {
     }
   }, [showEmergencyOnly, allTickets])
 
+  //This shows when the searchTerm state changes 
+  useEffect(() => {
+    const foundTickets = allTickets.filter(ticket => 
+      ticket.description.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+      setFilteredTickets(foundTickets)
+  }, [searchTerm, allTickets])
+
   return ( 
       <div className="tickets-container">
         <h2>Tickets</h2>
-        <div>
+        <div className="filter-bar">
           <button className="filter-btn btn-primary" 
           onClick={ () => {setShowEmergencyOnly(true)}}>
             Emergency
@@ -40,6 +49,10 @@ export const TicketList = () => {
         onClick={() => {setShowEmergencyOnly(false)}}>
           Show All
         </button>
+        <input onChange={ (event) => 
+        {setSearchTerm(event.target.value)
+        }}
+        type="text" placeholder="Search Tickets" className="ticket-search"/>
         </div>
         <article className="tickets">
           {filteredTickets.map((ticketObj) => {
