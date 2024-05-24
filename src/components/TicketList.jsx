@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "./tickets/Tickets.css"
 import { getAllTickets } from "../services/ticketService.jsx"
 import { Ticket } from "./tickets/Ticket.jsx"
+import { TicketFilterBar } from "./tickets/TicketFilterBar.jsx"
 
 
 // <> </> is a react fragment which wraps the other elements. JSX only allows for one parent element
@@ -40,23 +41,10 @@ export const TicketList = () => {
   return ( 
       <div className="tickets-container">
         <h2>Tickets</h2>
-        <div className="filter-bar">
-          <button className="filter-btn btn-primary" 
-          onClick={ () => {setShowEmergencyOnly(true)}}>
-            Emergency
-            </button>
-          <button className="filter-btn btn-info"
-        onClick={() => {setShowEmergencyOnly(false)}}>
-          Show All
-        </button>
-        <input onChange={ (event) => 
-        {setSearchTerm(event.target.value)
-        }}
-        type="text" placeholder="Search Tickets" className="ticket-search"/>
-        </div>
+          <TicketFilterBar setShowEmergencyOnly={setShowEmergencyOnly} setSearchTerm={setSearchTerm}/>
         <article className="tickets">
           {filteredTickets.map((ticketObj) => {
-            return <Ticket ticket={ticketObj} name="Joe" key= {ticketObj.id}/>
+            return <Ticket ticket={ticketObj} key={ticketObj.id}/>
           })}
         </article>
       </div>
