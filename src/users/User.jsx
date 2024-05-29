@@ -5,7 +5,8 @@ export const User = ({user}) => {
     <div className="user">
       <div>
         <div>Name</div>
-        <div className="user-info">{user.fullName}</div>
+        <div className="user-info">Name</div>
+          <div>{user.fullName}</div>
       </div>
       <div>
         <div className="user-info">Email</div>
