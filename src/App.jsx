@@ -6,6 +6,7 @@ import { EmployeeList } from "./components/employees/EmployeesList.jsx"
 import { Route } from "react-router-dom"
 import { NavBar } from "./components/nav/NavBar.jsx"
 import { Welcome } from "./components/welcome/Welcome.jsx"
+import { CustomerDetails } from "./components/customers/CustomerDetails.jsx"
 
 //by adding the component in self-closing tags, it renders 
 export const App = () => {
@@ -24,7 +25,7 @@ export const App = () => {
       <Route path="/customers" element={< EmployeeList/>} />
       <Route path="customers">
         <Route index element={< CustomerList />} />
-        <Route path=":customerId" element={<>Customer Details</>} />
+        <Route path=":customerId" element={<CustomerDetails />} />
       </Route>
     </Route>
   </Routes>

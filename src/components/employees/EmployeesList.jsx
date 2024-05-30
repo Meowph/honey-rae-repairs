@@ -16,7 +16,7 @@ export const EmployeeList = () => {
        <div className="employees">
           {employees.map(employeeObj => {
               return (
-                 <User user={employeeObj} />
+                 <User user={employeeObj}  key={employeeObj.id}/> //Marked wih red underline if key pair is not added to the child element
                 )
             })}
         </div>
